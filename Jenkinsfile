@@ -1,12 +1,19 @@
 pipeline {
     // agent any
-    agent {
-        node {
-            label 'linux && java17'
-        }
-    }
+    // agent {
+    //     node {
+    //         label 'linux && java17'
+    //     }
+    // }
+    agent none
+
     stages {
         stage('Build') {
+            agent {
+                node {
+                    label "linux && java17"
+                }
+            }
             steps {
                 script {
                     def data = [
@@ -24,13 +31,23 @@ pipeline {
             }
         }
         stage('Test') {
+            agent {
+                node {
+                    label "linux && java17"
+                }
+            }
             steps {
-                 echo('Start Test ')
+                echo('Start Test ')
                 sh('./mvnw clean compile test-compile')
                 echo('Finish Test ')
             }
         }
         stage('Deploy') {
+            agent {
+                node {
+                    label "linux && java17"
+                }
+            }
             steps {
                 echo('Hello Deploy 1')
                 sleep(5)

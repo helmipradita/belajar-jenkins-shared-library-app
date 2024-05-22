@@ -9,6 +9,15 @@ pipeline {
         stage('Build') {
             steps {
                 script {
+                    def data = [
+                            "name": 'helmi',
+                            "email": 'helmi@gmail.com'
+                        ],
+                }
+                writeJSON(file: 'data.json', json: data)
+
+
+                script {
                     for(int i = 0; i < 10; i++) {
                         echo "Hello ${i}"
                     }

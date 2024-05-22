@@ -42,22 +42,24 @@ pipeline {
                         values 'x86', 'x64'
                     }
                 }
-            }
 
-            stages {
-                stage("OS Setup") {
-                    agent {
-                        node {
-                            label "linux && java17"
+                stages {
+                    stage("OS Setup") {
+                        agent {
+                            node {
+                                label "linux && java17"
+                            }
                         }
-                    }
-                    steps {
-                        echo("OS: ${OS}")
-                        echo("ARC: ${ARC}")
-                    
+                        steps {
+                            echo("OS: ${OS}")
+                            echo("ARC: ${ARC}")
+                        
+                        }
                     }
                 }
             }
+
+            
         }
         stage("Preparation") {
             

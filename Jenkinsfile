@@ -10,11 +10,11 @@ pipeline {
             steps {
                 script {
                     def data = [
-                            "name": 'helmi',
-                            "email": 'helmi@gmail.com'
-                        ],
+                        "name": 'helmi',
+                        "email": 'helmi@gmail.com'
+                    ],
+                    writeJSON(file: 'data.json', json: data)
                 }
-                writeJSON(file: 'data.json', json: data)
 
 
                 script {

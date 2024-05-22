@@ -15,10 +15,10 @@ pipeline {
                 }
             }
             steps {
-                echo('Start Job :' ${env.JOB_NAME})
-                echo('Start Build :' ${env.BUILD_NUMBER})
-                echo('Branch Name :' ${env.BRANCH_NAME})
-                echo('Finish Prepare ')
+                echo("Start Job : ${env.JOB_NAME}")
+                echo("Start Build : ${env.BUILD_NUMBER}")
+                echo("Branch Name : ${env.BRANCH_NAME}")
+                echo("Finish Prepare ")
             }
         }
         stage('Build') {

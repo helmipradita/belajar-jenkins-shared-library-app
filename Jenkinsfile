@@ -26,6 +26,20 @@ pipeline {
     }
 
     stages {
+        stage("Parameter") {
+            agent {
+                node {
+                    label "linux && java17"
+                }
+            }
+            steps {
+                echo("Name: ${params.NAME}")
+                echo("Description: ${params.DESCRIPTION}")
+                echo("Deploy: ${params.DEPLOY}")
+                echo("Choice: ${params.CHOICE}")
+                echo("Secret: ${params.SECRET}")
+            }
+        }
         stage ("Prepare") {
             environment {
                 APP = credentials('root-vps_jenkins-agent')

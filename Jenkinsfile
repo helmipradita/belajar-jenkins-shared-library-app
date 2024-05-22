@@ -119,11 +119,10 @@ pipeline {
                 }
             }
         }
-
-        stage('Deploy') {
+        stage('Release') {
             when {
                 expression {
-                    return params.DEPLOY
+                    return params.DEPLOY == true
                 }
             }
             agent {
@@ -132,10 +131,9 @@ pipeline {
                 }
             }
             steps {
-                echo("Ready to deploy")
+                echo('Start Release ')
             }
         }
-        
     }
     post {
         always {

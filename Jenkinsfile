@@ -207,7 +207,12 @@ pipeline {
             }
 
             steps {
-                echo('Finish Release ')
+                withCredentials([usernamePassword(
+                    credentialsId: 'root-vps_jenkins-agent', 
+                    usernameVariable: 'USER', 
+                    passwordVariable: 'PASSWORD')]) {
+                    sh('echo "Release it with -u $USER -p $PASSWORD" >> "rahasia.txt"')
+                }
             }
             
         }

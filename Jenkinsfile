@@ -40,16 +40,18 @@ pipeline {
                 stage("Prepare Java") {
                     steps {
                         echo("Prepare Java")
+                        sleep(3)
                     }
                 }
                 stage("Prepare Maven") {
                     steps {
                         echo("Prepare Maven")
+                        sleep(3)
                     }
                 }
             }
         }
-        
+
         stage("Parameter") {
             agent {
                 node {

@@ -12,6 +12,10 @@ pipeline {
         EMAIL = "helmipraditaa@gmail.com"
     }
 
+    triggers {
+        cron('*/5 * * * *')
+    }
+
     parameters {
         string(name: 'NAME', defaultValue: 'helmi', description: 'Name of the person to greet')
         text(name: 'DESCRIPTION', defaultValue: 'Hello World', description: 'Description of the person to greet')

@@ -31,19 +31,24 @@ pipeline {
 
     stages {
         stage("Preparation") {
-            agent {
-                node {
-                    label "linux && java17"
-                }
-            }
-            stages {
+            parallel {
                 stage("Prepare Java") {
+                    agent {
+                        node {
+                            label "linux && java17"
+                        }
+                    }
                     steps {
                         echo("Prepare Java")
                         sleep(3)
                     }
                 }
                 stage("Prepare Maven") {
+                    agent {
+                        node {
+                            label "linux && java17"
+                        }
+                    }
                     steps {
                         echo("Prepare Maven")
                         sleep(3)

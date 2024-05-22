@@ -12,6 +12,14 @@ pipeline {
         EMAIL = "helmipraditaa@gmail.com"
     }
 
+    parameters {
+        string(name: 'NAME', defaultValue: 'helmi', description: 'Name of the person to greet')
+        text(name: 'DESCRIPTION', defaultValue: 'Hello World', description: 'Description of the person to greet')
+        booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Flag to check')
+        choice(name: 'CHOICE', choices: ['one', 'two', 'three'], description: 'Choose one')
+        password(name: 'SECRET', defaultValue: '', description: 'Password for the app')
+    }
+
     options {
         disableConcurrentBuilds()
         timeout(time: 10, unit: 'MINUTES')

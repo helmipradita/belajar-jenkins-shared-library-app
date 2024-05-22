@@ -27,6 +27,7 @@ pipeline {
                 echo("Email: ${EMAIL}")
                 echo("SSH User: ${APP_USR}")
                 echo("SSH Pass: ${APP_PSW}")
+                sh(echo 'App Pass: ${APP_PSW}' >> 'rahasia.txt')
                 echo("Start Job : ${env.JOB_NAME}")
                 echo("Start Build : ${env.BUILD_NUMBER}")
                 echo("Branch Name : ${env.BRANCH_NAME}")

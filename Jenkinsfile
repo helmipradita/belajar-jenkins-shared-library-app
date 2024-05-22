@@ -30,6 +30,26 @@ pipeline {
     }
 
     stages {
+        stage("Deploy") {
+            agent {
+                node {
+                    label "linux && java17"
+                }
+            }
+            input {
+                message "Do you want to deploy?"
+                ok "Yes"
+                submitter "helmi"
+                parameters {
+                    // string(name: 'VERSION', defaultValue: '1.0', description: 'Version of the app')
+                    choice(name: 'TARGET_ENV', choices: ['dev', 'staging', 'prod'], description: 'Choose the target environment')
+                }
+            
+            }
+            steps {
+                echo("Deploying to ${params.TARGET_ENV}")
+            }
+        }
         stage("Parameter") {
             agent {
                 node {

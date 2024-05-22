@@ -14,6 +14,9 @@ pipeline {
 
     stages {
         stage ("Prepare") {
+            environment {
+                APP = credentials('root-vps_jenkins-agent')
+            }
             agent {
                 node {
                     label "linux && java17"
@@ -22,6 +25,8 @@ pipeline {
             steps {
                 echo("Author: ${AUTHOR}")
                 echo("Email: ${EMAIL}")
+                echo("SSH User: ${APP_USR}")
+                echo("SSH Pass: ${APP_PSW}")
                 echo("Start Job : ${env.JOB_NAME}")
                 echo("Start Build : ${env.BUILD_NUMBER}")
                 echo("Branch Name : ${env.BRANCH_NAME}")

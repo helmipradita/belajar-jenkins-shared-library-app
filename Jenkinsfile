@@ -120,6 +120,21 @@ pipeline {
             }
         }
         
+        stage("Release") {
+            when {
+                expression {
+                    return params.DEPLOY == true
+                }
+                agent {
+                    node {
+                        label "linux && java17"
+                    }
+                }
+                steps {
+                    echo("Release the app")
+                }
+            }
+        }
     }
     post {
         always {

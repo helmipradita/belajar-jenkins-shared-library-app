@@ -30,7 +30,37 @@ pipeline {
     }
 
     stages {
+        stage("OS Setup") {
+            matrix {
+                axes {
+                    axis {
+                        name 'OS'
+                        values 'linux', 'windows', 'mac'
+                    }
+                    axis {
+                        name 'ARC'
+                        values 'x86', 'x64'
+                    }
+                }
+            }
+
+            stages {
+                stage("OS Setup") {
+                    agent {
+                        node {
+                            label "linux && java17"
+                        }
+                    }
+                    steps {
+                        echo("OS: ${OS}")
+                        echo("ARC: ${ARC}")
+                    
+                    }
+                }
+            }
+        }
         stage("Preparation") {
+            
             parallel {
                 stage("Prepare Java") {
                     agent {

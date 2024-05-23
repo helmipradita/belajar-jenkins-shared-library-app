@@ -5,6 +5,15 @@ import helmipradita.jenkins.Output;
 pipeline {
     agent any 
     stages {
+        stage("Library resources") {
+            steps {
+                script {
+                    def config = libraryResource("config/build.json")
+                    echo(config)
+                }
+            }
+        }
+
         stage("Hello Person") {
             steps {
                 script {
